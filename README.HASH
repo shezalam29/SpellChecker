@@ -15,11 +15,11 @@ make all
 Input files: query_words, words.txt, wordsEnglish.txt, document1.txt, document1_short.txt
 Output files: none 
 
-Part 1 
+
 File: create_and_test_hash.cc, quadratic_probing.h, linear_probing.h
 Fully completed 
 
-For part 1 of the assignment, I modified the provided quadratic_probing.h 
+I modified the provided quadratic_probing.h 
 file and created the linear_probing.h file. In quadratic_probing, I added 
 functions that find and calculate information including the number of elements
 in the hash table, the size of the table, the load factor, the average number of 
@@ -44,11 +44,11 @@ The wrapper functions acts as a main function that calls the TestFunctionForHash
 function based on user-specified flag which could be quadratic, linear, double.
 
 
-Part 2
+
 File: double_hashing.h
 R value: 97
 
-For part 2 of the assignement, I wrote code to implement double hashing in 
+I wrote code to implement double hashing in 
 double_hashing.h. I attribute code here again to the already provided 
 quadratic_probing.h file which was an easy to understand template. The 
 getter and calculation functions for the required information are still
@@ -60,11 +60,11 @@ here. collisions_ is iterated by 1, again. For the R value, I set it
 to 97 which I chose because it's a good prime number less than the 
 size of the table. 
 
-Part 3
+
 File: spell_check.cc
 Fully completed 
 
-For part 3 of the assignment, I implemented a spell checker in spell_check.cc
+I implemented a spell checker in spell_check.cc
 using the double hashing algorithm. The program takes in two files: one with the
 words to be spell checked and then corrected and one file that is a list of words 
 of the English language. I placed all words in the dictionary in a hash table.
