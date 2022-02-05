@@ -1,0 +1,107 @@
+Shezan Alam 
+
+References used: 
+-Data Structures and Algorithm Analysis in C++ by Mark A. Weiss 
+-Sven Dietrich CSCI 335 Slides
+
+
+How to run: 
+make clean
+make all
+./create_and_test_hash words.txt query_words.txt <flag>
+** Flag has to be specified as linear, quadratic, double, rvalue can be specified
+./spell_check document1.txt wordsEn.txt
+
+Input files: query_words, words.txt, wordsEnglish.txt, document1.txt, document1_short.txt
+Output files: none 
+
+Part 1 
+File: create_and_test_hash.cc, quadratic_probing.h, linear_probing.h
+Fully completed 
+
+For part 1 of the assignment, I modified the provided quadratic_probing.h 
+file and created the linear_probing.h file. In quadratic_probing, I added 
+functions that find and calculate information including the number of elements
+in the hash table, the size of the table, the load factor, the average number of 
+collisions, and the total number of collisions. These values are then used in the 
+create_and_test_hash program to print out. I created the collisions_ variable
+to keep track of collisions and this was iterated by 1 in the while loop
+of the FindPos function which checks if current position is not empty. 
+The linear_probing function was straightfoward to implement. It was very similar
+to the quadratic_probing function. I attribute most of the code there to 
+the already provided quadratic_probing.h file. The major difference lied 
+inside the FindPos function in which we don't need offset. But, collisions
+were still iterated by 1 accordingly. All the getter and calculation functions 
+I added to quadratic_probing are here, too. 
+In the create_and_test_hash program, I added code that would take in as Input
+a txt file that contains a list of words and a txt file that contains the words 
+to be searched. It would then insert the word file into a hash table. 
+I added statements to the TestFunctionForHashTable to print out all the 
+required information. The file checks whether each word in the given file 
+is in the hash table and prints the corresponding output based on whether 
+the word was Found or Not and how many probes it took to find. 
+The wrapper functions acts as a main function that calls the TestFunctionForHashTable
+function based on user-specified flag which could be quadratic, linear, double.
+
+
+Part 2
+File: double_hashing.h
+R value: 97
+
+For part 2 of the assignement, I wrote code to implement double hashing in 
+double_hashing.h. I attribute code here again to the already provided 
+quadratic_probing.h file which was an easy to understand template. The 
+getter and calculation functions for the required information are still
+the same. The difference in this file lies in the FindPos function. 
+There, offset = InternalHash_(x) which is a second InternalHash 
+function I implemented where the calculation is based on the hashing technique 
+described in the textbook (hash2(x) = R - (x mod R)). current_pos = InternalHash(x)
+here. collisions_ is iterated by 1, again. For the R value, I set it 
+to 97 which I chose because it's a good prime number less than the 
+size of the table. 
+
+Part 3
+File: spell_check.cc
+Fully completed 
+
+For part 3 of the assignment, I implemented a spell checker in spell_check.cc
+using the double hashing algorithm. The program takes in two files: one with the
+words to be spell checked and then corrected and one file that is a list of words 
+of the English language. I placed all words in the dictionary in a hash table.
+This was done with the MakeDictionary() function. I wrote a helper function 
+that removes unneccessary punctuation like '?' and ',' and '.' that could be found 
+appended to words to be checked. In this function puncCheck(), I also convert
+the letters to lowercase. 
+The program spell checks by seeing if the word is in the dictionary file
+because if it is spelled wrong it won't be in the hashtable. I wrote
+for loops to correct the spelling if the word could not be found in
+the dictionary. There are three loops for cases A, B, and c. In case A,
+letters from the English alphabet are added to different positions in the word
+until a correct one is dound. In case B, letters in different positions 
+are removed until a correct one is found. In case C, letters in different 
+positions are swapped until a correct one is found. 
+Finally, the wrapper function acted as a main functions calling 
+all the other functions implemented. 
+
+I ran into a couple of errors in this assignment. First there were
+redefinition errors with the prime helper functions, but I realized 
+these weren't needed in the linear_probing and double_hashing programs. 
+Then, for some reason my code was not running in my local terminal. 
+I figured out that depending on where my project was located on my hard
+dis, it affected the buildpath or so I think. The problem eventually 
+stopped. For my spell checker I ran into many syntax problems due to 
+the nature of my code. I used many loops and it became 
+hard to track nested parenthesis. This was fixed easily however. 
+For the spell checker, I kept finding that my program would 
+correct the word "skiny" to "skinny" twice. But, I realized that it's 
+the nature of the spell checker which inserts an 'n' character
+after the 'i' and after the 'n'. 
+When uploading and running through the remote servers at Hunter College CS lab,
+I encountered warnings with quadratic_probing which involved
+a comparison between signed and unsigned integer expressions.
+In the IsPrime() function I made it so the int was unsigned and
+this fixed the problem. No warnings or compilation errors occured on the 
+remote lab.
+Other than this, complications were minimal because the textbook and Slides
+helped a lot. 
+
